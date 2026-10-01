@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Memory": {
+      "title": "Memory",
+      "description": "A couple photo strip memory document",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the memory",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "maxLength": 128
+        },
+        "userId": {
+          "type": "string",
+          "description": "The user ID of the creator",
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "maxLength": 128
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the memory",
+          "maxLength": 200
+        },
+        "caption": {
+          "type": "string",
+          "description": "Romantic handwriting caption",
+          "maxLength": 300
+        },
+        "coupleNames": {
+          "type": "string",
+          "description": "Names of the couple",
+          "maxLength": 150
+        },
+        "city1": {
+          "type": "string",
+          "description": "City of partner 1",
+          "maxLength": 100
+        },
+        "city2": {
+          "type": "string",
+          "description": "City of partner 2",
+          "maxLength": 100
+        },
+        "distanceKm": {
+          "type": "number",
+          "description": "Distance between cities in KM"
+        },
+        "dateStr": {
+          "type": "string",
+          "description": "Formatted date string",
+          "maxLength": 100
+        },
+        "imageDataUrl": {
+          "type": "string",
+          "description": "Base64 data URL of the photo strip",
+          "maxLength": 850000
+        },
+        "layout": {
+          "type": "string",
+          "description": "Layout format of the strip",
+          "enum": ["strip3", "strip4", "polaroid"]
+        },
+        "theme": {
+          "type": "string",
+          "description": "Frame theme",
+          "enum": ["blush", "airmail", "minimal", "noir", "lavender", "champagne"]
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Epoch timestamp in ms when created"
+        }
+      },
+      "required": ["id", "userId", "coupleNames", "imageDataUrl", "layout", "theme", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/memories/{memoryId}": {
+      "schema": {
+        "$ref": "#/entities/Memory"
+      },
+      "description": "Stores user photo strip memories"
+    }
+  }
+}

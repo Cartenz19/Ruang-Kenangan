@@ -1,0 +1,8 @@
+{
+  "name": "Ruang Kenangan - Studio Photobox & Galeri Memori",
+  "description": "Ruang Kenangan: Studio photobox romantis bilah ganda dan galeri memori kenangan abadi.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}
